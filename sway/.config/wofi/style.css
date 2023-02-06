@@ -1,0 +1,40 @@
+* {
+    font-family: "Noto Sans";
+    font-size: 14px;
+}
+
+#window {
+	border-radius: 4px;
+	border: 2px solid;
+}
+
+#outer-box {
+	padding: 10px;
+}
+
+#input {
+	padding: 5px 10px;
+}
+
+#scroll {
+	margin-top: 10px;
+}
+
+#inner-box {
+}
+
+#img {
+	padding-right: 8px;
+}
+
+#entry {
+	padding: 6px;
+}
+
+#input:image {
+	padding-right: 8px;
+}
+
+#input, #entry:selected {
+	border-radius: 4px;
+}
