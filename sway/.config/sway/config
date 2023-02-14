@@ -1,6 +1,7 @@
 #
 # Startup
 #
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec_always swww init
 exec_always swww img ~/Pictures/bitrot.jpg
 exec_always "pkill waybar ; waybar"
@@ -22,7 +23,7 @@ set $explorer thunar
 # Output configuration (swaymsg -t get_outputs)
 #
 output DP-2 resolution 3440x1440@144Hz position 0,0
-output DP-3 resolution 2560x1440@144Hz position 3440,0
+output DP-1 resolution 2560x1440@144Hz position 3440,0
 
 #
 # Workspace pinning
@@ -32,11 +33,11 @@ workspace 02 output DP-2
 workspace 03 output DP-2
 workspace 04 output DP-2
 workspace 05 output DP-2
-workspace 06 output DP-3
-workspace 07 output DP-3
-workspace 08 output DP-3
-workspace 09 output DP-3
-workspace 10 output DP-3
+workspace 06 output DP-1
+workspace 07 output DP-1
+workspace 08 output DP-1
+workspace 09 output DP-1
+workspace 10 output DP-1
 
 #
 # Idle configuration

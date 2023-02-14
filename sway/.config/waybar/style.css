@@ -1,0 +1,214 @@
+* {
+	/* `otf-font-awesome` is required to be installed for icons */
+	font-family: FontAwesome, RobotoMono;
+	font-size: 13px;
+}
+
+window#waybar {
+	background-color: #2F343F;
+	/*border-bottom: 3px solid rgba(100, 114, 125, 0.5);*/
+	color: #A7ADBA;
+	transition-property: background-color;
+	transition-duration: .5s;
+}
+
+window#waybar.hidden {
+	opacity: 0.2;
+}
+
+/*
+window#waybar.empty {
+	background-color: transparent;
+}
+window#waybar.solo {
+	background-color: #FFFFFF;
+}
+*/
+
+button {
+	/* Use box-shadow instead of border so the text isn't offset */
+	box-shadow: inset 0 -3px transparent;
+	/* Avoid rounded borders under each button name */
+	border: none;
+	border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+	background: inherit;
+	box-shadow: inset 0 -3px #ffffff;
+}
+
+#workspaces button {
+	padding: 0 5px;
+	background-color: transparent;
+	color: #ffffff;
+}
+
+#workspaces button:hover {
+	background: rgba(0, 0, 0, 0.2);
+}
+
+#workspaces button.focused {
+	background-color: #64727D;
+	/*box-shadow: inset 0 -3px #ffffff;*/
+}
+
+#workspaces button.urgent {
+	background-color: #eb4d4b;
+}
+
+#mode {
+	background-color: #64727D;
+	border-bottom: 3px solid #ffffff;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#keyboard-state {
+	padding: 0 10px;
+	color: #343d46;
+}
+
+#window,
+#workspaces {
+	margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+	margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+	margin-right: 0;
+}
+
+#clock {
+	background-color: #f99157;
+}
+
+#battery {
+	background-color: #6699cc;
+}
+
+#battery.charging, #battery.plugged {
+	background-color: #26A65B;
+}
+
+@keyframes blink {
+	to {
+		background-color: #A7ADBA;
+		color: #6699cc;
+	}
+}
+
+#battery.critical:not(.charging) {
+	background-color: #f53c3c;
+	color: #ffffff;
+	animation-name: blink;
+	animation-duration: 0.5s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+label:focus {
+	background-color: #000000;
+}
+
+#cpu {
+	background-color: #5fb3b3;
+}
+
+#memory {
+	background-color: #99c794;
+}
+
+#disk {
+	background-color: #fac863;
+}
+
+#backlight {
+	background-color: #f99157;
+}
+
+#network {
+	background-color: #f99157;
+}
+
+#network.disconnected {
+	background-color: #1b2b34;
+}
+
+#pulseaudio {
+	background-color: #c594c5;
+}
+
+#pulseaudio.muted {
+	background-color: #1b2b34;
+}
+
+#wireplumber {
+	background-color: #c594c5;
+}
+
+#wireplumber.muted {
+	background-color: #1b2b34;
+}
+
+#temperature {
+	background-color: #6699cc;
+}
+
+#temperature.critical {
+	background-color: #ec5f67;
+}
+
+#tray {
+	background-color: #1b2b34;
+}
+
+#tray > .passive {
+	-gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+	-gtk-icon-effect: highlight;
+	background-color: #eb4d4b;
+}
+
+#idle_inhibitor {
+	background-color: #99c794;
+	min-width: 16px;
+}
+
+#idle_inhibitor.activated {
+	background-color: #fac863;
+	min-width: 16px;
+}
+
+#keyboard-state {
+	background-color: #c594c5;
+}
+
+#scratchpad {
+	background-color: #5fb3b3;
+}
+
+#scratchpad.empty {
+	background-color: transparent;
+}
