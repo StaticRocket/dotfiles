@@ -18,6 +18,8 @@ set $term alacritty
 set $menu wofi --show drun
 set $browser firefox
 set $explorer thunar
+set $screenshot ~/.config/sway/screenshot.sh
+set $clipboard wl-copy
 
 #
 # Output configuration (swaymsg -t get_outputs)
@@ -65,6 +67,10 @@ exec swayidle -w \
 
 	# Start your file explorer
 	bindsym $mod+Slash exec $explorer
+
+	# Screenshot commands
+	bindsym $mod+Print exec $screenshot
+	bindsym $mod+Shift+Print exec $screenshot - | $clipboard
 
 	# Drag floating windows by holding down $mod and left mouse button.
 	# Resize them with right mouse button + $mod.
