@@ -64,3 +64,4 @@ nnoremap <C-Right> :tabnext<CR>
 
 set clipboard+=unnamedplus
 set colorcolumn=80
+set path+=**
