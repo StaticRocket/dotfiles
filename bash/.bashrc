@@ -25,10 +25,6 @@ grep -q "$HOME/.local/bin" <<< "$PATH" \
 grep -q "$HOME/.local/share/cargo/bin" <<< "$PATH" \
 	|| export PATH="$HOME/.local/share/cargo/bin:$PATH"
 
-# startx
-alias x='startx &> /dev/null'
-if [ -z "$XAUTHORITY" ]; then export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority; fi
-
 # xdg
 export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_CACHE_HOME="$HOME"/.cache
