@@ -63,3 +63,52 @@ export GOPATH="$XDG_DATA_HOME"/go
 show_color() {
     perl -e 'foreach $a(@ARGV){print "\e[48:2::".join(":",unpack("C*",pack("H*",$a)))."m \e[49m "; print "$a\n"};print "\n"' "$@"
 }
+
+fordir() {
+	for dir in */; do
+		if cd "$dir"; then
+			setterm --foreground blue --bold on
+			echo "$dir"
+			setterm --default
+			"$@"
+			cd ..
+		fi
+	done
+}
+
+disk-mount() {
+	sudo partx -a -v "$1"
+}
+
+disk-umount() {
+	sudo umount "$1"*
+	sudo partx -d -v "$1"
+	sudo losetup -d "$1"
+}
+
+disk-extend() {
+	read -p "Extend $1$2 to cover all free space? [y/N] " -r confirm
+	if [ "$confirm" == "y" ]; then
+		sudo parted "$1" resizepart "$2" 100%
+		sudo fsck -f "$1$2"
+		sudo resize2fs "$1$2"
+	else
+		echo "Aborting!"
+	fi
+}
+
+git-worktree-reattach() {
+	if [ -f ".git" ]; then
+		worktree_path=$(grep -P -o '(?<=gitdir:\s).*' .git)
+		gitdir_path="$worktree_path/gitdir"
+		if [ -f "$gitdir_path" ]; then
+			printf "%s\n" "$PWD/.git" > "$gitdir_path"
+		else
+			printf "%s\n" \
+				"Unable to find gitdir file at: $gitdir_path"
+		fi
+	else
+		printf "%s\n" \
+			"Not at root of git worktree!"
+	fi
+}
