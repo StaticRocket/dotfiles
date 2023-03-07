@@ -2,8 +2,7 @@
 # Startup
 #
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec_always swww init
-exec_always swww img ~/Pictures/bitrot.jpg
+exec_always "pkill swaybg ; swaybg -i ~/Pictures/background -m fill"
 exec_always "pkill waybar ; waybar"
 
 #
@@ -20,26 +19,6 @@ set $browser firefox
 set $explorer thunar
 set $screenshot ~/.config/sway/screenshot.sh
 set $clipboard wl-copy
-
-#
-# Output configuration (swaymsg -t get_outputs)
-#
-output DP-2 resolution 3440x1440@144Hz position 0,0
-output DP-1 resolution 2560x1440@144Hz position 3440,0
-
-#
-# Workspace pinning
-#
-workspace 01 output DP-2
-workspace 02 output DP-2
-workspace 03 output DP-2
-workspace 04 output DP-2
-workspace 05 output DP-2
-workspace 06 output DP-1
-workspace 07 output DP-1
-workspace 08 output DP-1
-workspace 09 output DP-1
-workspace 10 output DP-1
 
 #
 # Idle configuration
@@ -179,65 +158,40 @@ exec swayidle -w \
 #
 # Resizing containers:
 #
-mode "resize" {
-	# left will shrink the containers width
-	# right will grow the containers width
-	# up will shrink the containers height
-	# down will grow the containers height
-	bindsym $left resize shrink width 10px
-	bindsym $down resize grow height 10px
-	bindsym $up resize shrink height 10px
-	bindsym $right resize grow width 10px
+	mode "resize" {
+		# left will shrink the containers width
+		# right will grow the containers width
+		# up will shrink the containers height
+		# down will grow the containers height
+		bindsym $left resize shrink width 10px
+		bindsym $down resize grow height 10px
+		bindsym $up resize shrink height 10px
+		bindsym $right resize grow width 10px
 
-	# Ditto, with arrow keys
-	bindsym Left resize shrink width 10px
-	bindsym Down resize grow height 10px
-	bindsym Up resize shrink height 10px
-	bindsym Right resize grow width 10px
+		# Ditto, with arrow keys
+		bindsym Left resize shrink width 10px
+		bindsym Down resize grow height 10px
+		bindsym Up resize shrink height 10px
+		bindsym Right resize grow width 10px
 
-	# Return to default mode
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
-}
-bindsym $mod+r mode "resize"
-
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-#bar {
-#	#font RobotoMono 10
-#	position top
-#	status_padding 0
-#	status_edge_padding 0
-#	tray_output none
-#
-#	# When the status_command prints a new line to stdout, swaybar updates.
-#	# The default just shows the current date and time.
-#	status_command i3status-rs
-#	#while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-#
-#	colors {
-#		statusline #A7ADBA
-#		background #2F343F
-#		inactive_workspace #2F343F #2F343F #5C5C5C
-#	}
-#}
+		# Return to default mode
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+	}
+	bindsym $mod+r mode "resize"
 
 #
-# Remove titlebar
+# Appearance
 #
 default_border pixel
 default_floating_border pixel
-
-#
-# Gaps
-#
 gaps inner 20
-
-#
-# Fonts
-#
 font RobotoMono Regular 10
 
-include /etc/sway/config.d/*
+#
+# Includes
+#
+include "~/.config/sway/output"
+include "/etc/sway/config.d/*"
+
+# vi: ft=swayconfig
