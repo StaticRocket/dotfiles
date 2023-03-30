@@ -112,3 +112,13 @@ git-worktree-reattach() {
 			"Not at root of git worktree!"
 	fi
 }
+
+podman-clean-externals() {
+	if [ -z "$(podman container ls -q)" ]; then
+		containers=$(podman container ls --external --format '{{.ID}}')
+		podman container rm -f "$containers" 2> /dev/null
+	else
+		printf "%s\n" \
+			"Please stop all running containers first!"
+	fi
+}
