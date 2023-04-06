@@ -122,3 +122,16 @@ podman-clean-externals() {
 			"Please stop all running containers first!"
 	fi
 }
+
+arm-chroot() {
+	sudo -E systemd-nspawn -q -M "arm-chroot" \
+		--bind /usr/bin/qemu-aarch64-static \
+		--resolv-conf=copy-host \
+		-E TERM=linux \
+		-E https_proxy \
+		-E http_proxy \
+		-E fpt_proxy \
+		-E no_proxy \
+		-D "$1" \
+		/bin/bash
+}
