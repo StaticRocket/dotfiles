@@ -3,7 +3,7 @@
 #
 
 # lock screen
-super + shift + Return
+ctrl + alt + l
 	light-locker-command -l
 
 # brightness ctl
@@ -38,6 +38,10 @@ super + backslash
 super + Return
 	alacritty
 
+# terminal emulator
+super + slash
+	thunar
+
 # program launcher
 super + @space
 	rofi -modi drun -show drun
@@ -52,7 +56,7 @@ super + shift + e
 	bspc quit
 
 # restart everything
-super + r
+super + shift + r
 	pkill polybar; \
 	pkill sxhkd; \
 	pkill picom; \
