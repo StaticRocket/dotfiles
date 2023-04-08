@@ -97,7 +97,7 @@ disk-umount() {
 	sudo losetup -d "$1"
 }
 
-complete -G '/dev/*' disk-extend
+complete -G '/dev/@(sd|nvme)*' disk-extend
 disk-extend() {
 	RELATED_BLOCKS=$(lsblk -asrno path "$1")
 	TARGET_BLOCK=${RELATED_BLOCKS[0]}
