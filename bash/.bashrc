@@ -64,66 +64,94 @@ show_color() {
     perl -e 'foreach $a(@ARGV){print "\e[48:2::".join(":",unpack("C*",pack("H*",$a)))."m \e[49m "; print "$a\n"};print "\n"' "$@"
 }
 
+complete -A command fordir
 fordir() {
 	for dir in */; do
 		if cd "$dir"; then
 			setterm --foreground blue --bold on
-			echo "$dir"
+			printf "%s\n" "$dir"
 			setterm --default
-			"$@"
+			"$@" | awk '{print "  " $0}'
 			cd ..
 		fi
 	done
 }
 
+complete -A file disk-mount
 disk-mount() {
+	if [ ! -e "$1" ]; then
+		printf "%s\n" "Path not valid!"
+		return 1
+	fi
 	sudo partx -a -v "$1"
 }
 
+complete -G '/dev/loop[0-9]' disk-umount
 disk-umount() {
+	if [ ! -e "$1" ]; then
+		printf "%s\n" "Path not valid!"
+		return 1
+	fi
 	sudo umount "$1"*
 	sudo partx -d -v "$1"
 	sudo losetup -d "$1"
 }
 
+complete -G '/dev/*' disk-extend
 disk-extend() {
-	read -p "Extend $1$2 to cover all free space? [y/N] " -r confirm
+	RELATED_BLOCKS=$(lsblk -asrno path "$1")
+	TARGET_BLOCK=${RELATED_BLOCKS[0]}
+	PARENT_BLOCK=${RELATED_BLOCKS[1]}
+	TARGET_NUMBER=${TARGET_BLOCK: -1}
+	if [ -z "$TARGET_BLOCK" ] || [ -z "$PARENT_BLOCK" ]; then
+		printf "%s\n" "Unable to detect target or parent block device!"
+		return 1
+	fi
+	read -p "Extend $TARGET_BLOCK to cover all free space? [y/N] " \
+		-r confirm
 	if [ "$confirm" == "y" ]; then
-		sudo parted "$1" resizepart "$2" 100%
-		sudo fsck -f "$1$2"
-		sudo resize2fs "$1$2"
+		sudo parted "$PARENT_BLOCK" resizepart "$TARGET_NUMBER" 100%
+		sudo fsck -f "$TARGET_BLOCK"
+		sudo resize2fs "$TARGET_BLOCK"
 	else
-		echo "Aborting!"
+		printf "%s\n" "Aborting!"
+		return 1
 	fi
 }
 
 git-worktree-reattach() {
-	if [ -f ".git" ]; then
-		worktree_path=$(grep -P -o '(?<=gitdir:\s).*' .git)
-		gitdir_path="$worktree_path/gitdir"
-		if [ -f "$gitdir_path" ]; then
-			printf "%s\n" "$PWD/.git" > "$gitdir_path"
-		else
-			printf "%s\n" \
-				"Unable to find gitdir file at: $gitdir_path"
-		fi
-	else
+	if [ ! -f ".git" ]; then
 		printf "%s\n" \
 			"Not at root of git worktree!"
+		return 1
+	fi
+	worktree_path=$(grep -P -o '(?<=gitdir:\s).*' .git)
+	gitdir_path="$worktree_path/gitdir"
+	if [ -f "$gitdir_path" ]; then
+		printf "%s\n" "$PWD/.git" > "$gitdir_path"
+	else
+		printf "%s\n" \
+			"Unable to find gitdir file at: $gitdir_path"
+		return 1
 	fi
 }
 
 podman-clean-externals() {
-	if [ -z "$(podman container ls -q)" ]; then
-		containers=$(podman container ls --external --format '{{.ID}}')
-		podman container rm -f "$containers" 2> /dev/null
-	else
+	if [ -n "$(podman container ls -q)" ]; then
 		printf "%s\n" \
 			"Please stop all running containers first!"
+		return 1
 	fi
+	containers=$(podman container ls --external --format '{{.ID}}')
+	podman container rm -f "$containers" 2> /dev/null
 }
 
+complete -A directory arm-chroot
 arm-chroot() {
+	if [ ! -e "$1" ]; then
+		printf "%s\n" "Path not valid!"
+		return 1
+	fi
 	sudo -E systemd-nspawn -q -M "arm-chroot" \
 		--bind /usr/bin/qemu-aarch64-static \
 		--resolv-conf=copy-host \
