@@ -15,7 +15,11 @@ alias srcinfo='makepkg --printsrcinfo > .SRCINFO'
 alias ssh='TERM=xterm-256color ssh'
 alias vim='nvim'
 alias vi='nvim'
-alias fssh='ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+alias fssh='ssh \
+	-o PreferredAuthentications=password \
+	-o PubkeyAuthentication=no \
+	-o UserKnownHostsFile=/dev/null \
+	-o StrictHostKeyChecking=no'
 
 # add local bin to path
 grep -q "$HOME/.local/bin" <<< "$PATH" \
@@ -97,13 +101,24 @@ disk-umount() {
 	sudo losetup -d "$1"
 }
 
-complete -G '/dev/@(sd|nvme)*' disk-extend
+_disk-extend() {
+	mapfile -t COMPREPLY < <(
+		compgen -W "$(lsblk -asrno path 2> /dev/null)" -- "$2"
+	)
+}
+complete -F _disk-extend disk-extend
 disk-extend() {
-	RELATED_BLOCKS=$(lsblk -asrno path "$1")
+	local TARGET_BLOCK PARENT_BLOCK TARGET_NUMBER RELATED_BLOCKS
+	mapfile -t RELATED_BLOCKS < <(
+		lsblk -asrno path "$1" 2> /dev/null
+	)
 	TARGET_BLOCK=${RELATED_BLOCKS[0]}
 	PARENT_BLOCK=${RELATED_BLOCKS[1]}
 	TARGET_NUMBER=${TARGET_BLOCK: -1}
 	if [ -z "$TARGET_BLOCK" ] || [ -z "$PARENT_BLOCK" ]; then
+		printf "PARENT_BLOCK=%s\n" "${PARENT_BLOCK}"
+		printf "TARGET_BLOCK=%s\n" "${TARGET_BLOCK}"
+		printf "TARGET_NUMBER=%s\n" "${TARGET_NUMBER}"
 		printf "%s\n" "Unable to detect target or parent block device!"
 		return 1
 	fi
@@ -120,6 +135,7 @@ disk-extend() {
 }
 
 git-worktree-reattach() {
+	local worktree_path gitdir_path
 	if [ ! -f ".git" ]; then
 		printf "%s\n" \
 			"Not at root of git worktree!"
@@ -137,6 +153,7 @@ git-worktree-reattach() {
 }
 
 podman-clean-externals() {
+	local containers
 	if [ -n "$(podman container ls -q)" ]; then
 		printf "%s\n" \
 			"Please stop all running containers first!"
