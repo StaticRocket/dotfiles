@@ -152,6 +152,10 @@ git-worktree-reattach() {
 	fi
 }
 
+git-tree() {
+	git log --graph --simplify-by-decoration --pretty=format:'%d' --all
+}
+
 podman-clean-externals() {
 	local containers
 	if [ -n "$(podman container ls -q)" ]; then
