@@ -160,7 +160,10 @@ podman-clean-externals() {
 		return 1
 	fi
 	containers=$(podman container ls --external --format '{{.ID}}')
-	podman container rm -f "$containers" 2> /dev/null
+	for id in $containers; do
+		printf "%s\n" "Removing $id"
+		podman container rm -f "$id"
+	done
 }
 
 complete -A directory arm-chroot
