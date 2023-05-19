@@ -187,6 +187,7 @@ default_border pixel
 default_floating_border pixel
 gaps inner 20
 font RobotoMono Regular 10
+seat * xcursor_theme capitaine-cursors-light 24
 
 #
 # Includes
