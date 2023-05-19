@@ -19,6 +19,9 @@ set $browser firefox
 set $explorer thunar
 set $screenshot ~/.config/sway/screenshot.sh
 set $clipboard wl-copy
+set $audio_raise pamixer -i 5
+set $audio_lower pamixer -d 5
+set $audio_mute pamixer -t
 
 #
 # Idle configuration
@@ -50,6 +53,11 @@ exec swayidle -w \
 	# Screenshot commands
 	bindsym $mod+Print exec $screenshot
 	bindsym $mod+Shift+Print exec $screenshot - | $clipboard
+
+	# Audio commands
+	bindsym XF86AudioLowerVolume exec $audio_lower
+	bindsym XF86AudioRaiseVolume exec $audio_raise
+	bindsym XF86AudioMute exec $audio_mute
 
 	# Drag floating windows by holding down $mod and left mouse button.
 	# Resize them with right mouse button + $mod.
