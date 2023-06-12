@@ -98,7 +98,7 @@ exec swayidle -w \
 	bindsym $mod+Shift+Down move down
 	bindsym $mod+Shift+Up move up
 	bindsym $mod+Shift+Right move right
-	bindsym $mod+c exec swaymsg move position center
+	bindsym $mod+c move position center
 #
 # Workspaces:
 #
@@ -113,6 +113,7 @@ exec swayidle -w \
 	bindsym $mod+8 workspace number 08
 	bindsym $mod+9 workspace number 09
 	bindsym $mod+0 workspace number 10
+	bindsym $mod+Tab workspace back_and_forth
 	# Move focused container to workspace
 	bindsym $mod+Shift+1 move container to workspace number 01
 	bindsym $mod+Shift+2 move container to workspace number 02
