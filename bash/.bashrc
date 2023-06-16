@@ -11,6 +11,7 @@ PS1='[\u@\h \W]\$ '
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+alias diff='diff --color=auto'
 alias srcinfo='makepkg --printsrcinfo > .SRCINFO'
 alias ssh='TERM=xterm-256color ssh'
 alias vim='nvim'
