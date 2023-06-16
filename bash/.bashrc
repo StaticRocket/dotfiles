@@ -71,6 +71,7 @@ show_color() {
 
 complete -A command fordir
 fordir() {
+	local dir
 	for dir in */; do
 		if cd "$dir"; then
 			setterm --foreground blue --bold on
