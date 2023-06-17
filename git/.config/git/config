@@ -1,7 +1,14 @@
 [user]
-	name = "StaticRocket"
-	email = "35777938+StaticRocket@users.noreply.github.com"
+	name = "Randolph Sapp"
+	email = "res.sapp@gmail.com"
 [init]
 	defaultBranch = master
 [merge]
 	tool = nvimdiff
+[sendemail]
+	smtpServer = smtp.gmail.com
+	smtpServerPort = 587
+	smtpEncryption = tls
+	smtpUser = res.sapp@gmail.com
+[credential]
+	helper = store

@@ -1,1 +1,5 @@
+# plug old script
 plug.vim.old
+
+# git credential store
+credentials
