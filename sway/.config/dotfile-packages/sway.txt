@@ -1,0 +1,14 @@
+arc-solid-gtk-theme
+dunst
+grim
+papirus-icon-theme
+perl-file-mimeinfo
+slurp
+sway
+swaylock
+ttf-font-awesome
+ttf-roboto-mono
+waybar
+wofi
+xdg-desktop-portal-gtk
+xdg-desktop-portal-wlr
