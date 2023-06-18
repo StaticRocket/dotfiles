@@ -1,0 +1,3 @@
+neovim
+ttf-font-awesome
+ttf-roboto-mono
