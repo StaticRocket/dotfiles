@@ -1,0 +1,2 @@
+alacritty
+ttf-roboto-mono
