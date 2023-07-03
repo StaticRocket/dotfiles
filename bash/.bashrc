@@ -128,7 +128,7 @@ disk-extend() {
 		-r confirm
 	if [ "$confirm" == "y" ]; then
 		sudo parted "$PARENT_BLOCK" resizepart "$TARGET_NUMBER" 100%
-		sudo fsck -f "$TARGET_BLOCK"
+		sudo fsck -y -f "$TARGET_BLOCK"
 		sudo resize2fs "$TARGET_BLOCK"
 	else
 		printf "%s\n" "Aborting!"
