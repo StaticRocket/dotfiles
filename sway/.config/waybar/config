@@ -22,8 +22,8 @@
     },
     "sway/scratchpad": {
         "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": ["", ""],
+        "show-empty": true,
+        "format-icons": [""],
         "tooltip": true,
         "tooltip-format": "{app}: {title}",
 	"on-click": "swaymsg scratchpad show"

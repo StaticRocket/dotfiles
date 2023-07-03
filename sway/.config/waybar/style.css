@@ -159,7 +159,7 @@ label:focus {
 }
 
 #pulseaudio.muted {
-	background-color: #1b2b34;
+	background-color: #99c794;
 }
 
 #wireplumber {
@@ -167,7 +167,7 @@ label:focus {
 }
 
 #wireplumber.muted {
-	background-color: #1b2b34;
+	background-color: #99c794;
 }
 
 #temperature {
@@ -210,5 +210,5 @@ label:focus {
 }
 
 #scratchpad.empty {
-	background-color: transparent;
+	background-color: #99c794;
 }
