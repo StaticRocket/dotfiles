@@ -2,8 +2,6 @@
 # Startup
 #
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec_always "pkill swaybg ; swaybg -i ~/Pictures/background -m fill"
-exec_always "pkill waybar ; waybar"
 
 #
 # Variables
@@ -19,9 +17,9 @@ set $browser firefox
 set $explorer thunar
 set $screenshot ~/.config/sway/screenshot.sh
 set $clipboard wl-copy
-set $audio_raise pamixer -i 5
-set $audio_lower pamixer -d 5
-set $audio_mute pamixer -t
+set $audio_raise wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+set $audio_lower wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+set $audio_mute wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
 #
 # Idle configuration
@@ -73,7 +71,7 @@ exec swayidle -w \
 	bindsym $mod+Shift+e exec swaymsg exit
 
 	# Lock sway
-	bindsym Ctrl+Alt+l exec swaylock
+	bindsym Ctrl+Alt+l exec "swaymsg inhibit_idle none && swaylock"
 #
 # Moving around:
 #
@@ -197,6 +195,15 @@ default_floating_border pixel
 gaps inner 20
 font RobotoMono Regular 10
 seat * xcursor_theme capitaine-cursors-light 24
+output * background "~/Pictures/background" fill
+
+#
+# Status Bar:
+#
+bar {
+	position top
+	swaybar_command waybar
+}
 
 #
 # Includes
