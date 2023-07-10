@@ -41,17 +41,16 @@ button:hover {
 
 #workspaces button {
 	padding: 0 5px;
-	background-color: transparent;
+	background-color: #4f5b66;
 	color: #ffffff;
 }
 
 #workspaces button:hover {
-	background: rgba(0, 0, 0, 0.2);
+	background: transparent;
 }
 
 #workspaces button.focused {
-	background-color: #64727D;
-	/*box-shadow: inset 0 -3px #ffffff;*/
+	box-shadow: inset 0 -3px #ffffff;
 }
 
 #workspaces button.urgent {
@@ -179,7 +178,7 @@ label:focus {
 }
 
 #tray {
-	background-color: #1b2b34;
+	background-color: #4f5b66;
 }
 
 #tray > .passive {
