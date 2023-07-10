@@ -23,7 +23,7 @@ call plug#begin()
 	Plug 'neomake/neomake'
 	Plug 'tpope/vim-fugitive'
 	Plug 'dart-lang/dart-vim-plugin'
-	Plug 'StaticRocket/neoformat'
+	Plug 'sbdchd/neoformat'
 call plug#end()
 
 let g:NERDTreeMinimalUI = 1
