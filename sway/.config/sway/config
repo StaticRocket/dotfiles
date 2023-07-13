@@ -71,7 +71,7 @@ exec swayidle -w \
 	bindsym $mod+Shift+e exec swaymsg exit
 
 	# Lock sway
-	bindsym Ctrl+Alt+l exec "swaymsg inhibit_idle none && swaylock"
+	bindsym Ctrl+Alt+l exec swaylock
 #
 # Moving around:
 #
