@@ -77,7 +77,8 @@ fordir() {
 			setterm --foreground blue --bold on
 			printf "%s\n" "$dir"
 			setterm --default
-			"$@" | awk '{print "  " $0}'
+			script -q /dev/null -c "$*" 2>&1 | \
+				awk '{print "  " $0}'
 			cd ..
 		fi
 	done
