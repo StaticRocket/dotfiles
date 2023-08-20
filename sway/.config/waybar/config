@@ -55,7 +55,7 @@
   "clock": {
     "timezone": "America/Chicago",
     "format": "{:%H:%M} ",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "tooltip-format": "{calendar}",
     "format-alt": "{:%Y-%m-%d} "
   },
   "cpu": {
