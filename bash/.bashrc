@@ -78,7 +78,8 @@ fordir() {
 			printf "%s\n" "$dir"
 			setterm --default
 			script -q /dev/null -c "$*" 2>&1 | \
-				awk '{print "  " $0}'
+				awk '{gsub("\r","\r  "); print "  " $0}'
+			printf '\r'
 			cd ..
 		fi
 	done
