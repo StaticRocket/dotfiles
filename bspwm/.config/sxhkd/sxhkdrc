@@ -12,11 +12,7 @@ XF86MonBrightness{Down,Up}
 
 # kbd brightness ctl
 XF86KbdBrightness{Down,Up}
-	asusctl -k {off, high}
-
-# ctl profile switcher
-XF86Launch4
-	asusctl profile -n
+	light -s sysfs/leds/asus::kbd_backlight {-U,-A} 35
 
 # volume ctl
 XF86Audio{LowerVolume,RaiseVolume,Mute}
