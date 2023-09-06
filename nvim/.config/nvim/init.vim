@@ -63,5 +63,9 @@ nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 
 set clipboard+=unnamedplus
-set colorcolumn=80
+set colorcolumn=+0
+set textwidth=80
 set path+=**
+
+" set pylint preferred width
+autocmd FileType python set textwidth=100
