@@ -186,7 +186,7 @@ arm-chroot() {
 		-E TERM=linux \
 		-E https_proxy \
 		-E http_proxy \
-		-E fpt_proxy \
+		-E ftp_proxy \
 		-E no_proxy \
 		-D "$1" \
 		/bin/bash
