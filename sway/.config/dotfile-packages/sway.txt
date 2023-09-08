@@ -12,6 +12,7 @@ thunar
 ttf-font-awesome
 ttf-roboto-mono
 waybar
+wl-clipboard
 wofi
 xdg-desktop-portal-gtk
 xdg-desktop-portal-wlr
