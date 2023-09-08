@@ -9,8 +9,18 @@ export GDK_BACKEND=wayland
 export XDG_CURRENT_DESKTOP=sway
 export MOZ_ENABLE_WAYLAND=1
 
+# Theme overrides
+export XCURSOR_THEME=capitaine-cursors-light
+export XCURSOR_SIZE=48
+export GTK_THEME=Arc-Dark-solid
+export QT_STYLE_OVERRIDE=kvantum
+
+# Terminal override xdg-tools
+export TERMINAL='alacritty -e'
+
 # GTK theme garbage
 gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
 gsettings set org.gnome.desktop.interface cursor-theme capitaine-cursors-light
+gsettings set org.gnome.desktop.interface gtk-theme Arc-Dark-solid
 
-exec /usr/bin/sway
+exec /usr/bin/sway "$@"
