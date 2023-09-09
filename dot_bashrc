@@ -69,7 +69,7 @@ show_color() {
     perl -e 'foreach $a(@ARGV){print "\e[48:2::".join(":",unpack("C*",pack("H*",$a)))."m \e[49m "; print "$a\n"};print "\n"' "$@"
 }
 
-complete -A command fordir
+complete -F _command fordir
 fordir() {
 	local dir
 	for dir in */; do
