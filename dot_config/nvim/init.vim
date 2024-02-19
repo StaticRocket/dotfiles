@@ -9,7 +9,7 @@ let g:startify_custom_header = [
 \ ]
 
 call plug#begin()
-	Plug 'chriskempson/base16-vim'
+	Plug 'ajmwagar/vim-deus'
 	Plug 'chrisbra/SudoEdit.vim'
 	Plug 'airblade/vim-gitgutter'
 	Plug 'wincent/terminus'
@@ -34,8 +34,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree")
 
 if $TERM!='linux'
 	set termguicolors
-	colorscheme base16-oceanicnext
-	let g:airline_theme='base16_oceanicnext'
+	colorscheme deus
+	let g:airline_theme='deus'
 	let g:airline_powerline_fonts = 1
 endif
 
