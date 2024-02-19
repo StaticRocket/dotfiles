@@ -209,6 +209,7 @@ bar {
 # Includes
 #
 include "~/.config/sway/output"
+include "~/.config/sway/systemd-user.conf"
 include "/etc/sway/config.d/*"
 
 # vi: ft=swayconfig
