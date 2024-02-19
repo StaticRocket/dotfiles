@@ -11,4 +11,4 @@
 	smtpEncryption = tls
 	smtpUser = res.sapp@gmail.com
 [credential]
-	helper = store
+	helper = /usr/lib/git-core/git-credential-libsecret
