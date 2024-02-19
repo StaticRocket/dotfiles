@@ -2,6 +2,11 @@
 # Startup
 #
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec /usr/bin/foot --server
+exec /usr/bin/mako
+exec /usr/bin/wl-paste --watch cliphist store
+
+xwayland enable
 
 #
 # Variables
@@ -11,7 +16,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term alacritty
+set $term footclient
 set $menu wofi --show drun
 set $browser firefox
 set $explorer thunar
@@ -20,6 +25,7 @@ set $clipboard wl-copy
 set $audio_raise wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
 set $audio_lower wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 set $audio_mute wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+set $clipmenu cliphist list | wofi --show dmenu | cliphist decode | $clipboard
 
 #
 # Idle configuration
@@ -56,6 +62,9 @@ exec swayidle -w \
 	bindsym XF86AudioLowerVolume exec $audio_lower
 	bindsym XF86AudioRaiseVolume exec $audio_raise
 	bindsym XF86AudioMute exec $audio_mute
+
+	# Show clipboard manager menu
+	bindsym $mod+Insert exec $clipmenu
 
 	# Drag floating windows by holding down $mod and left mouse button.
 	# Resize them with right mouse button + $mod.
@@ -196,6 +205,7 @@ gaps inner 20
 font RobotoMono Regular 10
 seat * xcursor_theme capitaine-cursors-light 24
 output * background "~/Pictures/background" fill
+client.focused #4c7899 #285577 #ffffff #2e9ef4 #99c794
 
 #
 # Status Bar:
