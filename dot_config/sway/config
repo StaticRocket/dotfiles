@@ -206,6 +206,12 @@ bar {
 }
 
 #
+# Window Rules
+#
+for_window [window_type="dialog"] floating enable
+for_window [window_role="dialog"] floating enable
+
+#
 # Includes
 #
 include "~/.config/sway/output"
