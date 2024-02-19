@@ -1,0 +1,12 @@
+anchor=top-right
+background-color=#2F343F
+border-color=#F99157
+border-radius=2
+border-size=2
+default-timeout=10000
+font=RobotoMono 10
+group-by=summary
+margin=20,20,20,20
+padding=10
+text-color=#A7ADBA
+width=350
