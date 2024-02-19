@@ -3,24 +3,24 @@
 set -e
 
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
-export QT_QPA_PLATFORM=wayland
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-export GDK_BACKEND=wayland
 export XDG_CURRENT_DESKTOP=sway
 export MOZ_ENABLE_WAYLAND=1
 
 # Theme overrides
 export XCURSOR_THEME=capitaine-cursors-light
-export XCURSOR_SIZE=48
+export XCURSOR_SIZE=24
+#export WLR_RENDERER=vulkan
 export GTK_THEME=Arc-Dark-solid
 export QT_STYLE_OVERRIDE=kvantum
 
 # Terminal override xdg-tools
-export TERMINAL='alacritty -e'
+export TERMINAL='footclient'
 
 # GTK theme garbage
 gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
 gsettings set org.gnome.desktop.interface cursor-theme capitaine-cursors-light
 gsettings set org.gnome.desktop.interface gtk-theme Arc-Dark-solid
 
-exec /usr/bin/sway "$@"
+mkdir -p ~/.local/state/sway
+exec /usr/bin/sway "$@" > ~/.local/state/sway/sway.log 2>&1
