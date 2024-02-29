@@ -59,8 +59,10 @@ nnoremap <M-Right> <C-w>l
 nnoremap <M-s> :setlocal spell!<CR>
 nnoremap <M-t> :NERDTreeToggle<CR>
 
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
+nnoremap <C-M-Left> :tabprevious<CR>
+nnoremap <C-M-Right> :tabnext<CR>
+nnoremap <M-Left> :bp<CR>
+nnoremap <M-Right> :bn<CR>
 
 set clipboard+=unnamedplus
 set colorcolumn=+0
