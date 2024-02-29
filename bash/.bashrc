@@ -77,7 +77,9 @@ fordir() {
 			setterm --foreground blue --bold on
 			printf "%s\n" "$dir"
 			setterm --default
-			COLUMNS=$(( COLUMNS - 3 )) script -q /dev/null -c "$*" 2>&1 | \
+			COLUMNS=$(( COLUMNS - 3 )) \
+				script -q /dev/null -c "$*" 2>&1 | \
+				expand | \
 				awk '{gsub("\r","\r  "); print "  " $0}'
 			printf '\r'
 			cd ..
