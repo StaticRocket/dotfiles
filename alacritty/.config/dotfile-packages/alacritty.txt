@@ -1,2 +1,0 @@
-alacritty
-ttf-roboto-mono
