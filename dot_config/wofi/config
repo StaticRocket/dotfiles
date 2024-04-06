@@ -1,5 +1,6 @@
 show=drun
 prompt=Search
+layer=overlay
 
 allow_markup=true
 allow_images=true
