@@ -19,6 +19,7 @@ set $right l
 set $term footclient
 set $menu wofi --show drun
 set $browser firefox
+set $browserPrivate $browser --private-window
 set $explorer thunar
 set $screenshot ~/.config/sway/screenshot.sh
 set $clipboard wl-copy
@@ -50,6 +51,7 @@ exec swayidle -w \
 
 	# Start your browser
 	bindsym $mod+Backslash exec $browser
+	bindsym $mod+Shift+Backslash exec $browserPrivate
 
 	# Start your file explorer
 	bindsym $mod+Slash exec $explorer
