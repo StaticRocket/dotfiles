@@ -56,7 +56,12 @@
     "timezone": "America/Chicago",
     "format": "{:%H:%M} ",
     "tooltip-format": "{calendar}",
-    "format-alt": "{:%Y-%m-%d} "
+    "format-alt": "{:%Y-%m-%d} ",
+    "calendar": {
+      "format": {
+        "today": "<span color='#f99157'><b>{}</b></span>"
+      }
+    }
   },
   "cpu": {
     "format": "{usage:02d}% "
