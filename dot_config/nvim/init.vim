@@ -24,6 +24,7 @@ call plug#begin()
 	Plug 'tpope/vim-fugitive'
 	Plug 'dart-lang/dart-vim-plugin'
 	Plug 'sbdchd/neoformat'
+	Plug 'dhruvasagar/vim-table-mode'
 call plug#end()
 
 let g:NERDTreeMinimalUI = 1
@@ -58,6 +59,7 @@ nnoremap <M-Right> <C-w>l
 
 nnoremap <M-s> :setlocal spell!<CR>
 nnoremap <M-t> :NERDTreeToggle<CR>
+nnoremap <M-f> :Neoformat<CR>
 
 nnoremap <C-M-Left> :tabprevious<CR>
 nnoremap <C-M-Right> :tabnext<CR>
@@ -71,3 +73,5 @@ set path+=**
 
 " set pylint preferred width
 autocmd FileType python set textwidth=100
+autocmd FileType rst set tabstop=3 shiftwidth=3 expandtab
+autocmd FileType dart set tabstop=2 shiftwidth=2 expandtab
