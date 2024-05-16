@@ -1,0 +1,8 @@
+[sendemail]
+{{- if eq .chezmoi.hostname "rs-desk" }}
+	identity = work
+{{- else }}
+	identity = home
+{{- end }}
+
+# vi:ft=gitconfig

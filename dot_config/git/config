@@ -1,14 +1,28 @@
 [user]
 	name = "Randolph Sapp"
 	email = "rs@ti.com"
+[sendemail]
+	suppresscc = all
+	confirm = always
+[mergetool "fugitive"]
+	cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"
+[merge]
+	tool = fugitive
+	renamelimit = 5000
 [init]
 	defaultBranch = master
-[merge]
-	tool = nvimdiff
-[sendemail]
-	smtpServer = smtp.gmail.com
-	smtpServerPort = 587
-	smtpEncryption = tls
-	smtpUser = res.sapp@gmail.com
+[advice]
+	diverging = false
+[alias]
+	fp = "format-patch -M -C --find-copies-harder"
+[trailer "fixes"]
+	key = Fixes
+	cmd = git log --format=ref -1
+[trailer "upstream"]
+	key = Upstream-Status
 [credential]
 	helper = /usr/lib/git-core/git-credential-libsecret
+[include]
+	path = ./identities/work.inc
+	path = ./identities/home.inc
+	path = ./identities/selector
