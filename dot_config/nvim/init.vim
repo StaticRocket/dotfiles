@@ -41,6 +41,7 @@ if $TERM!='linux'
 endif
 
 set relativenumber
+set number
 
 call neomake#configure#automake('nrwi', 500)
 
@@ -60,6 +61,7 @@ nnoremap <M-Right> <C-w>l
 nnoremap <M-s> :setlocal spell!<CR>
 nnoremap <M-t> :NERDTreeToggle<CR>
 nnoremap <M-f> :Neoformat<CR>
+nnoremap <M-n> :set relativenumber!<CR>:set number!<CR>
 
 nnoremap <C-M-Left> :tabprevious<CR>
 nnoremap <C-M-Right> :tabnext<CR>
