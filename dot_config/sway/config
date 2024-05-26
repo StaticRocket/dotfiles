@@ -27,6 +27,8 @@ set $audio_raise wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
 set $audio_lower wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 set $audio_mute wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 set $clipmenu cliphist list | wofi --show dmenu | cliphist decode | $clipboard
+set $brightness_lower brightnessctl s 51-
+set $brightness_raise brightnessctl s 51+
 
 #
 # Idle configuration
@@ -67,6 +69,10 @@ exec swayidle -w \
 
 	# Show clipboard manager menu
 	bindsym $mod+Insert exec $clipmenu
+
+	# Brightness commands
+	bindsym XF86MonBrightnessDown exec $brightness_lower
+	bindsym XF86MonBrightnessUp exec $brightness_raise
 
 	# Drag floating windows by holding down $mod and left mouse button.
 	# Resize them with right mouse button + $mod.
