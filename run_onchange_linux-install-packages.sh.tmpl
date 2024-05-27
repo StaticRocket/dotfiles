@@ -1,0 +1,14 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+
+sudo pacman -S --needed - << EOF
+{{ range .packages.linux.pacman.base -}}
+{{ . }}
+{{ end -}}
+{{ if eq .head true -}}
+{{ range .packages.linux.pacman.head -}}
+{{ . }}
+{{ end -}}
+{{ end -}}
+EOF
+{{ end -}}
