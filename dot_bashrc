@@ -96,7 +96,12 @@ disk-mount() {
 	sudo partx -a -v "$1"
 }
 
-complete -G '/dev/loop[0-9]' disk-umount
+_disk-umount() {
+	mapfile -t COMPREPLY < <(
+		compgen -W "$(losetup -anO NAME 2> /dev/null)" -- "$2"
+	)
+}
+complete -F _disk-umount disk-umount
 disk-umount() {
 	if [ ! -e "$1" ]; then
 		printf "%s\n" "Path not valid!"
@@ -109,7 +114,8 @@ disk-umount() {
 
 _disk-extend() {
 	mapfile -t COMPREPLY < <(
-		compgen -W "$(lsblk -asrno path 2> /dev/null)" -- "$2"
+		compgen -W "$(lsblk -asrno path --filter 'TYPE =~ "part"' \
+			2> /dev/null)" -- "$2"
 	)
 }
 complete -F _disk-extend disk-extend
