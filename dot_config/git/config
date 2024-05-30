@@ -15,6 +15,7 @@
 	diverging = false
 [alias]
 	fp = "format-patch -M -C --find-copies-harder"
+	wls = "worktree list"
 [trailer "fixes"]
 	key = Fixes
 	cmd = git log --format=ref -1
