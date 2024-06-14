@@ -27,8 +27,8 @@ set $audio_raise wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
 set $audio_lower wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 set $audio_mute wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 set $clipmenu cliphist list | wofi --show dmenu | cliphist decode | $clipboard
-set $brightness_lower brightnessctl s 51-
-set $brightness_raise brightnessctl s 51+
+set $brightness_lower brightnessctl s 20%-
+set $brightness_raise brightnessctl s 20%+
 
 #
 # Idle configuration
