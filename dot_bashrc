@@ -191,6 +191,7 @@ arm-chroot() {
 	sudo -E systemd-nspawn -q -M "arm-chroot" \
 		--bind /usr/bin/qemu-aarch64-static \
 		--resolv-conf=copy-host \
+		--link-journal=no \
 		-E TERM=linux \
 		-E https_proxy \
 		-E http_proxy \
@@ -212,6 +213,7 @@ osc7_cwd() {
         esac
         encoded+="${o}"
     done
+    # shellcheck disable=SC1003
     printf '\e]7;file://%s%s\e\\' "${HOSTNAME}" "${encoded}"
 }
 PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }osc7_cwd
