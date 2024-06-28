@@ -230,6 +230,14 @@ for_window [window_type="dialog"] floating enable
 for_window [window_role="dialog"] floating enable
 
 #
+# Inputs:
+#
+input * {
+	accel_profile flat
+	pointer_accel 0
+}
+
+#
 # Includes
 #
 include "~/.config/sway/output"
