@@ -10,7 +10,6 @@ let g:startify_custom_header = [
 
 call plug#begin()
 	Plug 'ajmwagar/vim-deus'
-	Plug 'chrisbra/SudoEdit.vim'
 	Plug 'airblade/vim-gitgutter'
 	Plug 'wincent/terminus'
 	Plug 'vim-airline/vim-airline'
