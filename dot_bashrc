@@ -7,7 +7,13 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-PS1='[\u@\h \W]\$ '
+_ps1_jobs() {
+	local job_count
+	job_count=$(jobs -p | wc -l)
+	[ "$job_count" -gt "0" ] && printf '[%s]' "$job_count"
+}
+
+PS1='$(_ps1_jobs)[\u@\h \W]\$ '
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
