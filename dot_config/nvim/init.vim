@@ -76,3 +76,4 @@ set path+=**
 autocmd FileType python set textwidth=100
 autocmd FileType rst set tabstop=3 shiftwidth=3 expandtab
 autocmd FileType dart set tabstop=2 shiftwidth=2 expandtab
+autocmd FileType json,jsonc set tabstop=2 shiftwidth=2 expandtab
