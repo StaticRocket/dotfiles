@@ -12,6 +12,7 @@
     "idle_inhibitor",
     "wireplumber",
     "network",
+    "bluetooth",
     "cpu",
     "memory",
     "temperature",
@@ -107,6 +108,16 @@
     "format-disconnected": "Disconnected ",
     "format-alt": "{ifname}: {ipaddr}/{cidr}",
     "on-click-right": "nm-connection-editor"
+  },
+  "bluetooth": {
+    "format": "{num_connections:02d} ",
+    "format-disabled": "",
+    "format-no-controller": "",
+    "format-connected": "{num_connections:02d} ",
+    "tooltip-format": "{status}",
+    "tooltip-format-connected": "{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}",
+    "on-click-right": "blueberry"
   },
   "wireplumber": {
     // "scroll-step": 1, // %, can be a float

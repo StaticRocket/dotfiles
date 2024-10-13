@@ -70,6 +70,7 @@ button:hover {
 #temperature,
 #backlight,
 #network,
+#bluetooth,
 #pulseaudio,
 #wireplumber,
 #tray,
@@ -151,6 +152,14 @@ label:focus {
 }
 
 #network.disconnected {
+        background-color: #1b2b34;
+}
+
+#bluetooth {
+	background-color: #6699cc;
+}
+
+#bluetooth.disabled {
         background-color: #1b2b34;
 }
 
