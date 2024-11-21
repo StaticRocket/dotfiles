@@ -4,7 +4,6 @@
 }
 
 #window {
-        border-radius: 4px;
         border: 2px solid;
 }
 
@@ -29,10 +28,6 @@
 #entry {
         padding: 6px;
         min-height: 24px;
-}
-
-#input:image {
-        padding-right: 8px;
 }
 
 #input,
