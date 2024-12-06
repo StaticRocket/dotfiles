@@ -9,6 +9,7 @@
   "modules-center": ["sway/window"],
   "modules-right": [
     "tray",
+    "custom/ups#eaton",
     "idle_inhibitor",
     "wireplumber",
     "network",
@@ -101,6 +102,11 @@
   },
   "battery#bat2": {
     "bat": "BAT2"
+  },
+  "custom/ups#eaton": {
+    "exec-if": "upsc -l | grep -q eaton",
+    "exec": "upsc eaton ups.status",
+    "interval": 30
   },
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
