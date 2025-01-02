@@ -126,6 +126,7 @@
     "tooltip-format": "{status}",
     "tooltip-format-connected": "{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}",
+    "on-click": "rfkill toggle bluetooth",
     "on-click-right": "blueberry"
   },
   "wireplumber": {
