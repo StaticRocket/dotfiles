@@ -21,6 +21,8 @@
 	cmd = git log --format=ref -1
 [trailer "upstream"]
 	key = Upstream-Status
+[rebase]
+	abbreviateCommands = true
 [credential]
 	helper = /usr/lib/git-core/git-credential-libsecret
 [include]
