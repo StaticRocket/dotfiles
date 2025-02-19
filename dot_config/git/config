@@ -16,11 +16,22 @@
 [alias]
 	fp = "format-patch -M -C --find-copies-harder"
 	wls = "worktree list"
+[trailer "test"]
+	key = Tested-by
+	cmd = ~/.config/git/scripts/identity.sh
+[trailer "review"]
+	key = Reviewed-by
+	cmd = ~/.config/git/scripts/identity.sh
+[trailer "sign"]
+	key = Signed-off-by
+	cmd = ~/.config/git/scripts/identity.sh
 [trailer "fixes"]
 	key = Fixes
 	cmd = git log --format=ref -1
+	where = start
 [trailer "upstream"]
 	key = Upstream-Status
+	where = start
 [rebase]
 	abbreviateCommands = true
 [credential]

@@ -1,0 +1,30 @@
+#!/bin/bash
+
+if (( $# == 0 )); then
+	cat <<- EOF
+		usage: $(basename "$0") <token>[(=|:)<value>]
+
+		Return a formatted git trailer string using the given token and
+		optional value.
+
+		See git-interpret-trailers(1) and git-config(1) for more details
+		about trailers.
+	EOF
+	exit 1
+fi
+
+ARGS=()
+for argument in "$@"; do
+	ARGS+=("--trailer" "$argument")
+done
+
+OUTPUT=$(git interpret-trailers "${ARGS[@]}" <<< "")
+EXIT=$?
+if (( EXIT == 0 )); then
+	# Chop off the first line of the output since interpret-trailers
+	# automatically adds one line of whitespace.
+
+	printf '%s\n' "$OUTPUT" | tail -n +2
+fi
+
+exit $EXIT
