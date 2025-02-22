@@ -28,8 +28,8 @@
     "capslock": true,
     "format": "{name} {icon}",
     "format-icons": {
-      "locked": "",
-      "unlocked": ""
+      "locked": "󰌾",
+      "unlocked": "󰌿"
     }
   },
   "sway/mode": {
@@ -38,7 +38,7 @@
   "sway/scratchpad": {
     "format": "{icon} {count}",
     "show-empty": true,
-    "format-icons": [""],
+    "format-icons": ["󰖲"],
     "tooltip": true,
     "tooltip-format": "{app}: {title}",
     "on-click": "swaymsg scratchpad show"
@@ -46,8 +46,8 @@
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
-      "activated": "",
-      "deactivated": ""
+      "activated": "󰅶",
+      "deactivated": "󰾪"
     }
   },
   "tray": {
@@ -56,9 +56,9 @@
   },
   "clock": {
     "timezone": "America/Chicago",
-    "format": "{:%H:%M} ",
+    "format": "{:%H:%M} 󰥔",
     "tooltip-format": "{calendar}",
-    "format-alt": "{:%Y-%m-%d} ",
+    "format-alt": "{:%Y-%m-%d} 󰃭",
     "calendar": {
       "format": {
         "today": "<span color='#f99157'><b>{}</b></span>"
@@ -66,10 +66,11 @@
     }
   },
   "cpu": {
-    "format": "{usage:02d}% "
+    "format": "{usage:02d}% {icon}",
+    "format-icons": ["󰾆", "󰾅", "󰓅"]
   },
   "memory": {
-    "format": "{percentage:02d}% "
+    "format": "{percentage:02d}% 󰍛"
   },
   "temperature": {
     // "thermal-zone": 2,
@@ -78,13 +79,13 @@
       "/sys/class/thermal/thermal_zone0/temp"
     ],
     "critical-threshold": 80,
-    // "format-critical": "{temperatureC}°C {icon}",
+    "format-critical": "{temperatureC:02d}°C 󰸁",
     "format": "{temperatureC:02d}°C {icon}",
-    "format-icons": ["", "", ""]
+    "format-icons": ["󱃃", "󰔏", "󱃂"]
   },
   "backlight": {
     // "device": "acpi_video1",
-    "format": "{percent:02d}% "
+    "format": "{percent:02d}% 󰳲"
   },
   "battery": {
     "states": {
@@ -93,12 +94,12 @@
       "critical": 15
     },
     "format": "{capacity:02d}% {icon}",
-    "format-charging": "{capacity}% ",
-    "format-plugged": "{capacity}% ",
+    "format-charging": "{capacity}% {icon}󱐌",
+    "format-plugged": "{capacity}% {icon}󰚥",
     "format-alt": "{time} {icon}",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
-    "format-icons": ["", "", "", "", ""]
+    "format-icons": ["󰂎", "󰁺", "󰁼", "󰁾", "󰁿", "󰂁", "󰂂", "󰁹"]
   },
   "battery#bat2": {
     "bat": "BAT2"
@@ -110,17 +111,17 @@
   },
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
-    "format-wifi": "{essid} ({signalStrength:02d}%) ",
-    "format-ethernet": "{ipaddr}/{cidr} ",
-    "tooltip-format": "{ifname} via {gwaddr} ",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "Disconnected ",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    "format-wifi": "{essid} ({signalStrength:02d}%) {icon}",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format-ethernet": "{ifname} 󰈀",
+    "tooltip-format": "{ipaddr}/{cidr}",
+    "format-linked": "{ifname} 󰌚",
+    "format-disconnected": "{ifname} 󰌙",
     "on-click-right": "nm-connection-editor"
   },
   "bluetooth": {
     "format": "{num_connections:02d} ",
-    "format-disabled": "",
+    "format-disabled": "󰂲",
     "format-no-controller": "",
     "format-connected": "{num_connections:02d} ",
     "tooltip-format": "{status}",
@@ -132,17 +133,17 @@
   "wireplumber": {
     // "scroll-step": 1, // %, can be a float
     "format": "{volume:02d}% {icon}",
-    "format-bluetooth": "{volume}% {icon}",
-    "format-bluetooth-muted": " {icon}",
-    "format-muted": "{volume:02d}% ",
+    "format-bluetooth": "{volume:02d}% {icon}",
+    "format-bluetooth-muted": "{volume:02d}% 󰝟",
+    "format-muted": "{volume:02d}% 󰝟",
     "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": ["", "", ""]
+      "headphone": "󰋋",
+      "hands-free": "󰋎",
+      "headset": "󰋎",
+      "phone": "󰏲",
+      "portable": "󰏲",
+      "car": "󰄋",
+      "default": ["󰕿", "󰖀", "󰕾"]
     },
     "on-click-right": "pavucontrol",
     "on-click": "pactl set-sink-mute $(pactl get-default-sink) toggle"
