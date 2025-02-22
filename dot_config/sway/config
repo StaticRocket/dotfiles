@@ -89,6 +89,9 @@ exec swayidle -w \
 
 	# Lock sway
 	bindsym Ctrl+Alt+l exec swaylock
+
+	# Hibernate
+	bindsym $mod+Ctrl+Alt+l exec systemctl hibernate
 #
 # Moving around:
 #
