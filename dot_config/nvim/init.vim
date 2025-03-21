@@ -14,8 +14,6 @@ call plug#begin()
 	Plug 'wincent/terminus'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
-	Plug 'zefei/vim-wintabs'
-	Plug 'zefei/vim-wintabs-powerline'
 	Plug 'ryanoasis/vim-devicons'
 	Plug 'mhinz/vim-startify'
 	Plug 'scrooloose/nerdtree'
@@ -32,7 +30,12 @@ autocmd User StartifyBufferOpened :NERDTree | :wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree")
 			\ && b:NERDTree.isTabTree()) | q | endif
 
+let g:airline_symbols_ascii = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+
 if $TERM!='linux'
+	unl g:airline_symbols_ascii
 	set termguicolors
 	colorscheme deus
 	let g:airline_theme='deus'
