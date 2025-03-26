@@ -35,5 +35,6 @@ packages:
         - 'waybar'
         - 'wl-clipboard'
         - 'wofi'
+        - 'wtype'
         - 'xdg-desktop-portal-wlr'
         - 'xdg-user-dirs-gtk'

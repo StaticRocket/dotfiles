@@ -29,6 +29,7 @@ set $audio_mute wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 set $clipmenu cliphist list | wofi --show dmenu | cliphist decode | $clipboard
 set $brightness_lower brightnessctl s 20%-
 set $brightness_raise brightnessctl s 20%+
+set $key_paste wl-paste -n | wtype -m logo -m shift -p insert -
 
 #
 # Idle configuration
@@ -69,6 +70,9 @@ exec swayidle -w \
 
 	# Show clipboard manager menu
 	bindsym $mod+Insert exec $clipmenu
+
+	# Send clipboard input key by key
+	bindsym $mod+Shift+Insert exec $key_paste
 
 	# Brightness commands
 	bindsym XF86MonBrightnessDown exec $brightness_lower
