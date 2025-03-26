@@ -10,7 +10,7 @@ export MOZ_ENABLE_WAYLAND=1
 # Theme overrides
 export XCURSOR_THEME=capitaine-cursors-light
 export XCURSOR_SIZE=24
-#export WLR_RENDERER=vulkan
+export WLR_RENDERER=vulkan
 export GTK_THEME=Arc-Dark-solid
 export QT_STYLE_OVERRIDE=kvantum
 
