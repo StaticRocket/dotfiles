@@ -8,6 +8,8 @@ let g:startify_custom_header = [
 \ '   ###    #### ##########  ########      ###     ########### ###       ###',
 \ ]
 
+let g:startify_lists = [{'type': 'files'}]
+
 call plug#begin()
 	Plug 'ajmwagar/vim-deus'
 	Plug 'airblade/vim-gitgutter'
@@ -40,6 +42,8 @@ if $TERM!='linux'
 	colorscheme deus
 	let g:airline_theme='deus'
 	let g:airline_powerline_fonts = 1
+	" default (bg2) is too dark
+	highlight link StartifySpecial deusGray
 endif
 
 set relativenumber
