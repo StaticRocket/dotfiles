@@ -70,6 +70,11 @@ nnoremap <C-M-Right> :tabnext<CR>
 nnoremap <M-Left> :bp<CR>
 nnoremap <M-Right> :bn<CR>
 
+" keep the default clipboard-tool for everything else
+if !empty($SSH_TTY)
+	let g:clipboard = 'osc52'
+endif
+
 set clipboard+=unnamedplus
 set colorcolumn=+0
 set textwidth=80
