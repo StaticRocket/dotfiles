@@ -32,18 +32,18 @@ autocmd User StartifyBufferOpened :NERDTree | :wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree")
 			\ && b:NERDTree.isTabTree()) | q | endif
 
-let g:airline_symbols_ascii = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 if $TERM!='linux'
-	unl g:airline_symbols_ascii
 	set termguicolors
 	colorscheme deus
 	let g:airline_theme='deus'
 	let g:airline_powerline_fonts = 1
 	" default (bg2) is too dark
 	highlight link StartifySpecial deusGray
+else
+	let g:airline_symbols_ascii = 1
 endif
 
 set relativenumber
