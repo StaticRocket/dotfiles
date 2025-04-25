@@ -71,6 +71,9 @@ export GNUPGHOME="$XDG_CONFIG_HOME"/gnupg
 # go
 export GOPATH="$XDG_DATA_HOME"/go
 
+# platformio
+export PLATFORMIO_CORE_DIR="$XDG_DATA_HOME"/platformio
+
 show_color() {
     perl -e 'foreach $a(@ARGV){print "\e[48:2::".join(":",unpack("C*",pack("H*",$a)))."m \e[49m "; print "$a\n"};print "\n"' "$@"
 }
