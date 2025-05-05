@@ -6,7 +6,7 @@ packages:
         - 'bash-completion'
         - 'neovim'
       head:
-        - 'arc-solid-gtk-theme'
+        - 'arc-solid-gtk-theme-git'
         - 'brightnessctl'
         - 'capitaine-cursors'
         - 'cliphist'
