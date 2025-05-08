@@ -4,6 +4,7 @@
   "height": 30, // Waybar height (to be removed for auto height)
   // "width": 1280, // Waybar width
   "spacing": 5,
+  "include": "~/.config/waybar/temperature",
   // Choose the order of the modules
   "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
   "modules-center": ["sway/window"],
@@ -73,11 +74,6 @@
     "format": "{percentage:02d}% 󰍛"
   },
   "temperature": {
-    // "thermal-zone": 2,
-    "hwmon-path": [
-      "/sys/class/hwmon/hwmon2/temp1_input",
-      "/sys/class/thermal/thermal_zone0/temp"
-    ],
     "critical-threshold": 80,
     "format-critical": "{temperatureC:02d}°C 󰸁",
     "format": "{temperatureC:02d}°C {icon}",

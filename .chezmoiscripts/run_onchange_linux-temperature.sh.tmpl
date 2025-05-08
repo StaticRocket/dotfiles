@@ -1,0 +1,19 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+
+# trick to keep this script's output cached
+SEARCH=(
+	{{ range glob "/sys/class/hwmon/hwmon*" }}
+	{{ . }}/name
+	{{ end }}
+)
+
+rg --files-with-matches "^(coretemp|k10temp)" "${SEARCH[@]}" \
+	| while read -r hwmon_name; do
+		for file in "${hwmon_name/name/temp}"*_input; do
+			printf '"%s"\n' "$file"
+		done
+	done \
+	| jq -s '{"temperature": {"hwmon-path": . }}' \
+		> ~/.config/waybar/temperature
+{{ end -}}

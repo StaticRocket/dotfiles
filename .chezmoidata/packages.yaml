@@ -4,7 +4,9 @@ packages:
     pacman:
       base:
         - 'bash-completion'
+        - 'jq'
         - 'neovim'
+        - 'ripgrep'
       head:
         - 'arc-solid-gtk-theme-git'
         - 'brightnessctl'
