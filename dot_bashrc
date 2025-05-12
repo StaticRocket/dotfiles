@@ -178,17 +178,35 @@ git-tree() {
 }
 
 podman-clean-externals() {
-	local containers
-	if [ -n "$(podman container ls -q)" ]; then
-		printf "%s\n" \
-			"Please stop all running containers first!"
-		return 1
+	local matches confirm
+	matches=$(podman container list --external \
+			--format '{{.ID}}\t{{.Command}}' \
+		| sed -n 's/\t\(buildah\|storage\)//p' \
+	)
+	if [ -z "$matches" ]; then
+		return
 	fi
-	containers=$(podman container ls --external --format '{{.ID}}')
-	for id in $containers; do
-		printf "%s\n" "Removing $id"
-		podman container rm -f "$id"
+	printf '%s\n' 'Found the following external containers:'
+	filter_arg=""
+	for match in $matches; do
+		if [ -z "$filter_arg" ]; then
+			filter_arg=$match
+			continue
+		fi
+		filter_arg=$(printf '%s|%s' "$filter_arg" "$match")
 	done
+	podman container ls --external --filter "id=(${filter_arg})"
+	read -p "Remove the above external containers? [y/N] " \
+		-r confirm
+	if [ "$confirm" == 'y' ]; then
+		for match in $matches; do 
+			if podman container inspect "$match" > /dev/null 2>&1; then
+				printf '%s\n' "Skipping $match - not external"
+			else
+				podman container rm -f "$match"
+			fi
+		done
+	fi
 }
 
 complete -A directory arm-chroot
