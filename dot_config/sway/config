@@ -238,6 +238,7 @@ for_window [window_role="dialog"] floating enable
 for_window [workspace="__focused__"] inhibit_idle fullscreen
 for_window [class="steam"] floating enable
 for_window [title="^Steam$" class="steam" instance="steamwebhelper"] move scratchpad
+for_window [title="^Extract$" app_id="engrampa"] floating enable
 
 #
 # Inputs:
