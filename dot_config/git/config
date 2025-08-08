@@ -27,7 +27,7 @@
 	cmd = ~/.config/git/scripts/identity.sh
 [trailer "fixes"]
 	key = Fixes
-	cmd = git log --format=ref -1
+	cmd = git log --format=fix -1
 	where = start
 [trailer "upstream"]
 	key = Upstream-Status
@@ -36,6 +36,7 @@
 	abbreviateCommands = true
 [pretty]
 	list = - %s%n%n%w(80,2,2)%b
+	fix = %h (\"%s\")
 [credential]
 	helper = /usr/lib/git-core/git-credential-libsecret
 [include]
