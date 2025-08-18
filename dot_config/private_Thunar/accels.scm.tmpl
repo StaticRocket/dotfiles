@@ -1,0 +1,5 @@
+{{ joinPath .chezmoi.homeDir ".config/Thunar/accels.scm" | include -}}
+{{ if joinPath .chezmoi.homeDir ".config/Thunar/accels.scm" | include | contains "uca-action-1693705298677282-1" -}}
+{{ else -}}
+(gtk_accel_path "<Actions>/ThunarActions/uca-action-1693705298677282-1" "<Shift>Return")
+{{ end -}}
