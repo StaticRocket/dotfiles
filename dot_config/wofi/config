@@ -2,7 +2,7 @@ show=drun
 prompt=Search
 layer=overlay
 
-allow_markup=true
+allow_markup=false
 allow_images=true
 image_size=24
 
