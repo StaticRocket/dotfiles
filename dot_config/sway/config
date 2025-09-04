@@ -149,6 +149,17 @@ exec swayidle -w \
 	bindsym $mod+Shift+0 move container to workspace number 10
 	# Note: workspaces can have any name you want, not just numbers.
 	# We just use 1-10 as the default.
+
+	# Move workspaces
+	bindsym $mod+Alt+$left move workspace to output left
+	bindsym $mod+Alt+$down move workspace to output down
+	bindsym $mod+Alt+$up move workspace to output up
+	bindsym $mod+Alt+$right move workspace to output right
+	# Ditto, with arrow keys
+	bindsym $mod+Alt+Left move workspace to output left
+	bindsym $mod+Alt+Down move workspace to output down
+	bindsym $mod+Alt+Up move workspace to output up
+	bindsym $mod+Alt+Right move workspace to output right
 #
 # Layout stuff:
 #
@@ -174,6 +185,9 @@ exec swayidle -w \
 
 	# Move focus to the parent container
 	bindsym $mod+a focus parent
+
+	# Move focus to the child container
+	bindsym $mod+d focus child
 #
 # Scratchpad:
 #
